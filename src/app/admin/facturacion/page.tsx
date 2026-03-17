@@ -97,7 +97,7 @@ export default function FacturacionPage() {
 
   return (
     <div>
-      <h1 className="mb-8 font-display text-3xl font-bold text-white">Facturacion</h1>
+      <h1 className="mb-8 font-display text-3xl font-bold text-white">Facturación</h1>
 
       {/* MRR cards */}
       <div className="mb-8 grid gap-4 sm:grid-cols-3">

@@ -1,4 +1,4 @@
-export const metadata = { title: "Configuracion" };
+export const metadata = { title: "Configuración" };
 
 export default function ConfigPage() {
   const links = [
@@ -10,7 +10,7 @@ export default function ConfigPage() {
     },
     {
       title: "Supabase Dashboard",
-      description: "Base de datos, autenticacion y almacenamiento.",
+      description: "Base de datos, autenticación y almacenamiento.",
       href: "https://supabase.com/dashboard",
       color: "bg-green-500/20 text-green-400",
     },
@@ -24,11 +24,11 @@ export default function ConfigPage() {
 
   return (
     <div>
-      <h1 className="mb-8 font-display text-3xl font-bold text-white">Configuracion</h1>
+      <h1 className="mb-8 font-display text-3xl font-bold text-white">Configuración</h1>
 
       {/* Site info */}
       <div className="mb-8 rounded-xl border border-white/10 bg-white/5 p-6">
-        <h2 className="mb-4 text-lg font-semibold text-white">Informacion del sitio</h2>
+        <h2 className="mb-4 text-lg font-semibold text-white">Información del sitio</h2>
         <dl className="space-y-3 text-sm">
           <div className="flex justify-between">
             <dt className="text-white/50">Nombre</dt>

@@ -173,10 +173,11 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="animate-pulse space-y-6 max-w-4xl">
-        <div className="h-8 w-64 bg-white/10 rounded" />
-        <div className="h-24 bg-white/10 rounded-xl" />
-        <div className="h-32 bg-white/10 rounded-xl" />
+      <div className="space-y-6 max-w-4xl">
+        <div className="h-8 w-64 bg-[var(--color-olive)]/10 rounded animate-shimmer" />
+        <div className="h-24 bg-[var(--color-olive)]/10 rounded-2xl animate-shimmer" />
+        <div className="h-32 bg-[var(--color-olive)]/10 rounded-2xl animate-shimmer" />
+        <div className="h-32 bg-[var(--color-olive)]/10 rounded-2xl animate-shimmer" />
       </div>
     );
   }
@@ -187,45 +188,47 @@ export default function DashboardPage() {
       : 0;
 
   return (
-    <div className="max-w-4xl space-y-8">
+    <div className="max-w-4xl space-y-8 stagger-children">
       {/* Welcome */}
-      <div>
-        <h1 className="font-display text-3xl font-bold">Hola, {userName}</h1>
-        <p className="text-[var(--color-white-75)] mt-1">
+      <div className="animate-fade-up">
+        <h1 className="font-display text-3xl font-bold text-[var(--color-black)]">
+          Hola, {userName}
+        </h1>
+        <p className="text-[var(--color-olive)] mt-1">
           Bienvenida a tu espacio de aprendizaje.
         </p>
       </div>
 
       {/* Progress overview */}
-      <div className="bg-[var(--color-green-dark)] rounded-2xl p-6">
+      <div className="bg-[var(--color-white)] rounded-2xl p-6 border border-[var(--color-border)] shadow-sm animate-fade-up delay-200">
         <div className="flex items-center justify-between mb-3">
-          <h2 className="font-medium">Tu progreso</h2>
-          <span className="text-sm text-[var(--color-gold)]">
+          <h2 className="font-medium text-[var(--color-black)]">Tu progreso</h2>
+          <span className="text-sm text-[var(--color-olive)]">
             {completedLessons} de {totalLessons} lecciones
           </span>
         </div>
-        <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+        <div className="w-full h-3 bg-[var(--color-olive)]/10 rounded-full overflow-hidden">
           <div
-            className="h-full bg-[var(--color-gold)] rounded-full transition-all duration-500"
+            className="h-full bg-[var(--color-gold)] rounded-full progress-animated"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
-        <p className="text-xs text-[var(--color-white-40)] mt-2">
+        <p className="text-xs text-[var(--color-text-muted)] mt-2">
           {progressPercent}% completado
         </p>
       </div>
 
       {/* Continue where you left off */}
       {continueLesson && (
-        <div className="bg-[var(--color-green-dark)] rounded-2xl p-6">
-          <h2 className="font-medium mb-4">Continua donde lo dejaste</h2>
+        <div className="bg-[var(--color-white)] rounded-2xl p-6 border border-[var(--color-border)] shadow-sm animate-fade-up delay-300">
+          <h2 className="font-medium text-[var(--color-black)] mb-4">Continúa donde lo dejaste</h2>
           <button
             onClick={() => router.push(`/app/leccion/${continueLesson.id}`)}
-            className="w-full text-left flex items-center gap-4 group"
+            className="w-full text-left flex items-center gap-4 group card-hover rounded-xl p-2 -m-2"
           >
-            <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-white/15 transition-colors">
+            <div className="w-16 h-16 bg-[var(--color-gold)] rounded-full flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
               <svg
-                className="w-8 h-8 text-[var(--color-gold)]"
+                className="w-7 h-7 text-[var(--color-black)] ml-0.5"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -233,14 +236,14 @@ export default function DashboardPage() {
               </svg>
             </div>
             <div className="min-w-0">
-              <p className="font-medium truncate group-hover:text-[var(--color-gold)] transition-colors">
+              <p className="font-medium text-[var(--color-black)] truncate group-hover:text-[var(--color-gold)] transition-colors">
                 {continueLesson.title}
               </p>
-              <p className="text-sm text-[var(--color-white-40)]">
+              <p className="text-sm text-[var(--color-text-secondary)]">
                 {continueLesson.module_title}
               </p>
-              <p className="text-xs text-[var(--color-white-40)] mt-1">
-                Posicion: {formatPosition(continueLesson.last_position)}
+              <p className="text-xs text-[var(--color-text-muted)] mt-1">
+                Posición: {formatPosition(continueLesson.last_position)}
                 {continueLesson.duration_seconds
                   ? ` / ${formatDuration(continueLesson.duration_seconds)}`
                   : ""}
@@ -252,25 +255,25 @@ export default function DashboardPage() {
 
       {/* Upcoming lessons */}
       {upcomingLessons.length > 0 && (
-        <div className="bg-[var(--color-green-dark)] rounded-2xl p-6">
-          <h2 className="font-medium mb-4">Proximas lecciones</h2>
-          <div className="space-y-3">
+        <div className="bg-[var(--color-white)] rounded-2xl p-6 border border-[var(--color-border)] shadow-sm animate-fade-up delay-400">
+          <h2 className="font-medium text-[var(--color-black)] mb-4">Próximas lecciones</h2>
+          <div className="divide-y divide-[var(--color-border)]">
             {upcomingLessons.map((lesson) => (
               <button
                 key={lesson.id}
                 onClick={() => router.push(`/app/leccion/${lesson.id}`)}
-                className="w-full text-left flex items-center justify-between py-2 group"
+                className="w-full text-left flex items-center justify-between py-3 group first:pt-0 last:pb-0"
               >
                 <div className="min-w-0">
-                  <p className="text-sm font-medium truncate group-hover:text-[var(--color-gold)] transition-colors">
+                  <p className="text-sm font-medium text-[var(--color-black)] truncate group-hover:text-[var(--color-gold)] transition-colors">
                     {lesson.title}
                   </p>
-                  <p className="text-xs text-[var(--color-white-40)]">
+                  <p className="text-xs text-[var(--color-text-secondary)]">
                     {lesson.module_title}
                   </p>
                 </div>
                 {lesson.duration_seconds && (
-                  <span className="text-xs text-[var(--color-white-40)] shrink-0 ml-4">
+                  <span className="text-xs text-[var(--color-text-muted)] shrink-0 ml-4">
                     {formatDuration(lesson.duration_seconds)}
                   </span>
                 )}
@@ -282,8 +285,8 @@ export default function DashboardPage() {
 
       {/* Recent notifications */}
       {notifications.length > 0 && (
-        <div className="bg-[var(--color-green-dark)] rounded-2xl p-6">
-          <h2 className="font-medium mb-4">Notificaciones recientes</h2>
+        <div className="bg-[var(--color-white)] rounded-2xl p-6 border border-[var(--color-border)] shadow-sm animate-fade-up delay-500">
+          <h2 className="font-medium text-[var(--color-black)] mb-4">Notificaciones recientes</h2>
           <div className="space-y-3">
             {notifications.map((notif) => (
               <div
@@ -296,14 +299,14 @@ export default function DashboardPage() {
                   <span className="w-2 h-2 bg-[var(--color-gold)] rounded-full mt-1.5 shrink-0" />
                 )}
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium">{notif.title}</p>
+                  <p className="text-sm font-medium text-[var(--color-black)]">{notif.title}</p>
                   {notif.body && (
-                    <p className="text-xs text-[var(--color-white-40)] mt-0.5">
+                    <p className="text-xs text-[var(--color-text-secondary)] mt-0.5">
                       {notif.body}
                     </p>
                   )}
                 </div>
-                <span className="text-xs text-[var(--color-white-40)] shrink-0">
+                <span className="text-xs text-[var(--color-text-muted)] shrink-0">
                   {timeAgo(notif.created_at)}
                 </span>
               </div>

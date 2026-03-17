@@ -69,7 +69,7 @@ export default function EditarCursoPage() {
   };
 
   const handleDelete = async () => {
-    if (!confirm("Eliminar este curso y todo su contenido? Esta accion no se puede deshacer.")) return;
+    if (!confirm("¿Eliminar este curso y todo su contenido? Esta acción no se puede deshacer.")) return;
     const { error } = await supabase.from("courses").delete().eq("id", params.id);
     if (error) return showMessage("error", error.message);
     router.push("/admin/cursos");
@@ -112,7 +112,7 @@ export default function EditarCursoPage() {
       <div className="rounded-xl border border-white/10 bg-white/5 p-6">
         <div className="space-y-5">
           <div>
-            <label className={labelClass}>Titulo</label>
+            <label className={labelClass}>Título</label>
             <input
               className={inputClass}
               value={title}
@@ -127,7 +127,7 @@ export default function EditarCursoPage() {
             <input className={inputClass} value={slug} onChange={(e) => setSlug(e.target.value)} />
           </div>
           <div>
-            <label className={labelClass}>Descripcion</label>
+            <label className={labelClass}>Descripción</label>
             <textarea
               className={inputClass + " min-h-[100px] resize-y"}
               value={description}
@@ -135,7 +135,7 @@ export default function EditarCursoPage() {
             />
           </div>
           <div>
-            <label className={labelClass}>Posicion</label>
+            <label className={labelClass}>Posición</label>
             <input
               type="number"
               className={inputClass + " w-32"}

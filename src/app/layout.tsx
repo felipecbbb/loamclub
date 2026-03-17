@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | LOAM CLUB",
   },
   description:
-    "Plataforma de formacion en bienestar emocional y psicologia aplicada por Lorena Amadio.",
+    "Plataforma de formación en bienestar emocional y psicología aplicada por Lorena Amadio.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
 };
 

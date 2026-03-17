@@ -8,11 +8,11 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const statusStyles: Record<BadgeStatus, string> = {
-  active: "bg-green-500/20 text-green-300 border-green-500/30",
-  trialing: "bg-green-500/20 text-green-300 border-green-500/30",
-  past_due: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
-  incomplete: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
-  canceled: "bg-red-500/20 text-red-300 border-red-500/30",
+  active: "bg-[var(--color-olive)]/10 text-[var(--color-olive)] border-[var(--color-olive)]/30",
+  trialing: "bg-[var(--color-olive)]/10 text-[var(--color-olive)] border-[var(--color-olive)]/30",
+  past_due: "bg-[var(--color-gold)]/20 text-[var(--color-olive)] border-[var(--color-gold)]/50",
+  incomplete: "bg-[var(--color-gold)]/20 text-[var(--color-olive)] border-[var(--color-gold)]/50",
+  canceled: "bg-[var(--color-error)]/10 text-[var(--color-error)] border-[var(--color-error)]/30",
 };
 
 const statusLabels: Record<BadgeStatus, string> = {

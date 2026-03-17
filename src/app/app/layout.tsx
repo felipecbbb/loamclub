@@ -133,17 +133,18 @@ export default function AppLayout({
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--color-green-base)]">
-        <div className="w-8 h-8 border-2 border-[var(--color-gold)] border-t-transparent rounded-full animate-spin" />
+      <div className="min-h-screen flex items-center justify-center bg-[var(--color-cream)]">
+        <div className="w-8 h-8 border-2 border-[var(--color-olive)] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   const sidebarContent = (
-    <>
-      <div className="font-display text-2xl font-bold text-[var(--color-gold)] mb-10">
-        LOAM <span className="italic">CLUB</span>
+    <div className="animate-slide-left flex flex-col h-full">
+      <div className="font-display text-2xl font-bold text-[var(--color-olive)] mb-10">
+        LOAM CL<span className="italic">U</span>B
       </div>
+
 
       <nav className="flex flex-col gap-1 flex-1">
         {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
@@ -151,10 +152,10 @@ export default function AppLayout({
             key={href}
             href={href}
             onClick={() => setMobileOpen(false)}
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${
               isActive(href)
-                ? "bg-[var(--color-green-base)] text-white font-medium"
-                : "text-[var(--color-white-75)] hover:text-white hover:bg-white/5"
+                ? "bg-[var(--color-olive)] text-[var(--color-cream)] font-medium border-l-[3px] border-[var(--color-gold)]"
+                : "text-[var(--color-olive)] hover:bg-[var(--color-cream)]"
             }`}
           >
             <Icon className="w-5 h-5 shrink-0" />
@@ -163,44 +164,44 @@ export default function AppLayout({
         ))}
       </nav>
 
-      <div className="mt-auto pt-6 border-t border-white/10">
-        <div className="text-sm text-[var(--color-white-75)] mb-3 truncate px-3">
+      <div className="mt-auto pt-6 border-t border-[var(--color-border)]">
+        <div className="text-sm text-[var(--color-olive)] mb-3 truncate px-3">
           {userName}
         </div>
         <button
           onClick={handleLogout}
-          className="w-full text-left text-sm text-[var(--color-white-40)] hover:text-white px-3 py-2 transition-colors"
+          className="w-full text-left text-sm text-[var(--color-text-muted)] hover:text-[var(--color-olive)] px-3 py-2 transition-colors"
         >
-          Cerrar sesion
+          Cerrar sesión
         </button>
       </div>
-    </>
+    </div>
   );
 
   return (
-    <div className="min-h-screen flex bg-[var(--color-green-base)]">
+    <div className="min-h-screen flex bg-[var(--color-cream)]">
       {/* Desktop sidebar */}
-      <aside className="w-64 bg-[var(--color-green-dark)] p-6 hidden md:flex md:flex-col shrink-0 sticky top-0 h-screen">
+      <aside className="w-64 bg-[var(--color-white)] border-r border-[var(--color-border)] p-6 hidden md:flex md:flex-col shrink-0 sticky top-0 h-screen">
         {sidebarContent}
       </aside>
 
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          className="fixed inset-0 bg-black/30 z-40 md:hidden"
           onClick={() => setMobileOpen(false)}
         />
       )}
 
       {/* Mobile sidebar */}
       <aside
-        className={`fixed top-0 left-0 bottom-0 w-72 bg-[var(--color-green-dark)] p-6 flex flex-col z-50 transform transition-transform duration-200 md:hidden ${
+        className={`fixed top-0 left-0 bottom-0 w-72 bg-[var(--color-white)] border-r border-[var(--color-border)] p-6 flex flex-col z-50 transform transition-transform duration-300 ease-out md:hidden ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <button
           onClick={() => setMobileOpen(false)}
-          className="absolute top-4 right-4 text-[var(--color-white-40)] hover:text-white"
+          className="absolute top-4 right-4 text-[var(--color-text-muted)] hover:text-[var(--color-olive)]"
         >
           <CloseIcon className="w-5 h-5" />
         </button>
@@ -210,24 +211,24 @@ export default function AppLayout({
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top bar */}
-        <header className="flex items-center justify-between px-6 py-4 md:px-8 border-b border-white/10">
+        <header className="flex items-center justify-between px-6 py-4 md:px-8 bg-[var(--color-white)] border-b border-[var(--color-border)]">
           <button
             onClick={() => setMobileOpen(true)}
-            className="md:hidden text-white"
+            className="md:hidden text-[var(--color-olive)]"
           >
             <MenuIcon className="w-6 h-6" />
           </button>
-          <div className="md:hidden font-display text-lg font-bold text-[var(--color-gold)]">
-            LOAM <span className="italic">CLUB</span>
+          <div className="md:hidden font-display text-lg font-bold text-[var(--color-olive)]">
+            LOAM CL<span className="italic">U</span>B
           </div>
           <div className="flex items-center gap-4 ml-auto">
             <button
               onClick={() => router.push("/app/dashboard")}
-              className="relative text-[var(--color-white-75)] hover:text-white transition-colors"
+              className="relative text-[var(--color-olive)] hover:text-[var(--color-black)] transition-colors"
             >
               <BellIcon className="w-5 h-5" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-[var(--color-gold)] text-[var(--color-green-dark)] text-[10px] font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-[var(--color-gold)] text-[var(--color-black)] text-[10px] font-bold rounded-full flex items-center justify-center">
                   {unreadCount > 9 ? "9+" : unreadCount}
                 </span>
               )}

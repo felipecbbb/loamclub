@@ -101,19 +101,19 @@ export default function CursosPage() {
   };
 
   const deleteCourse = async (id: string) => {
-    if (!confirm("Eliminar este curso y todo su contenido?")) return;
+    if (!confirm("¿Eliminar este curso y todo su contenido?")) return;
     await supabase.from("courses").delete().eq("id", id);
     fetchCourses();
   };
 
   const deleteModule = async (id: string) => {
-    if (!confirm("Eliminar este modulo y sus lecciones?")) return;
+    if (!confirm("¿Eliminar este módulo y sus lecciones?")) return;
     await supabase.from("modules").delete().eq("id", id);
     fetchCourses();
   };
 
   const deleteLesson = async (id: string) => {
-    if (!confirm("Eliminar esta leccion?")) return;
+    if (!confirm("¿Eliminar esta lección?")) return;
     await supabase.from("lessons").delete().eq("id", id);
     fetchCourses();
   };
@@ -141,7 +141,7 @@ export default function CursosPage() {
 
       {courses.length === 0 ? (
         <div className="rounded-xl border border-white/10 bg-white/5 p-8 text-center">
-          <p className="text-white/50">No hay cursos creados aun.</p>
+          <p className="text-white/50">No hay cursos creados aún.</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -177,7 +177,7 @@ export default function CursosPage() {
                     </span>
                   </div>
                   <p className="text-xs text-white/40">
-                    {course.modules.length} modulos, {course.modules.reduce((s, m) => s + m.lessons.length, 0)} lecciones
+                    {course.modules.length} módulos, {course.modules.reduce((s, m) => s + m.lessons.length, 0)} lecciones
                   </p>
                 </div>
                 <Link
@@ -198,7 +198,7 @@ export default function CursosPage() {
               {expandedCourses.has(course.id) && (
                 <div className="border-t border-white/5 px-4 pb-4">
                   {course.modules.length === 0 ? (
-                    <p className="py-3 pl-8 text-sm text-white/40">Sin modulos.</p>
+                    <p className="py-3 pl-8 text-sm text-white/40">Sin módulos.</p>
                   ) : (
                     course.modules.map((mod) => (
                       <div key={mod.id} className="ml-6 mt-2 rounded-lg border border-white/5 bg-white/[0.02]">

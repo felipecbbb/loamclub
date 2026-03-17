@@ -129,39 +129,43 @@ export default function PerfilPage() {
   if (loading) {
     return (
       <div className="animate-pulse space-y-6 max-w-2xl">
-        <div className="h-8 w-32 bg-white/10 rounded" />
-        <div className="h-40 bg-white/10 rounded-xl" />
-        <div className="h-40 bg-white/10 rounded-xl" />
+        <div className="h-8 w-32 bg-[var(--color-olive)]/10 rounded" />
+        <div className="h-40 bg-[var(--color-olive)]/10 rounded-2xl" />
+        <div className="h-40 bg-[var(--color-olive)]/10 rounded-2xl" />
       </div>
     );
   }
 
   return (
     <div className="max-w-2xl space-y-8">
-      <h1 className="font-display text-3xl font-bold">Perfil</h1>
+      <h1 className="font-display text-3xl font-bold text-[var(--color-black)] animate-fade-up">
+        Perfil
+      </h1>
 
       {/* User info */}
-      <div className="bg-[var(--color-green-dark)] rounded-2xl p-6 space-y-5">
-        <h2 className="font-medium text-lg">Informacion personal</h2>
+      <div className="bg-white rounded-2xl border border-[var(--color-olive)]/10 p-6 space-y-5 animate-fade-up delay-100">
+        <h2 className="font-display text-lg text-[var(--color-olive)]">
+          Información personal
+        </h2>
 
         <div>
-          <label className="block text-sm text-[var(--color-white-75)] mb-1.5">
+          <label className="block text-sm text-[var(--color-black)]/60 mb-1.5">
             Email
           </label>
-          <p className="text-sm bg-white/5 rounded-lg px-4 py-2.5">
+          <p className="text-sm bg-[var(--color-cream)] rounded-lg px-4 py-2.5 text-[var(--color-black)]">
             {profile?.email}
           </p>
         </div>
 
         <div>
-          <label className="block text-sm text-[var(--color-white-75)] mb-1.5">
+          <label className="block text-sm text-[var(--color-black)]/60 mb-1.5">
             Nombre
           </label>
           <input
             type="text"
             value={editName}
             onChange={(e) => setEditName(e.target.value)}
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]/50 focus:border-[var(--color-gold)]"
+            className="w-full bg-white border border-[var(--color-olive)]/20 rounded-lg px-4 py-2.5 text-sm text-[var(--color-black)] focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]/50 focus:border-[var(--color-gold)] placeholder:text-[var(--color-black)]/30"
             placeholder="Tu nombre"
           />
         </div>
@@ -170,12 +174,12 @@ export default function PerfilPage() {
           <button
             onClick={handleSaveName}
             disabled={saving || editName === (profile?.full_name || "")}
-            className="bg-[var(--color-gold)] text-[var(--color-green-dark)] font-medium text-sm px-5 py-2 rounded-lg hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-[var(--color-gold)] text-[var(--color-black)] font-medium text-sm px-5 py-2 rounded-lg hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {saving ? "Guardando..." : "Guardar nombre"}
           </button>
           {saved && (
-            <span className="text-sm text-[var(--color-gold)]">
+            <span className="text-sm text-[var(--color-olive)]">
               Guardado correctamente
             </span>
           )}
@@ -183,36 +187,38 @@ export default function PerfilPage() {
       </div>
 
       {/* Subscription */}
-      <div className="bg-[var(--color-green-dark)] rounded-2xl p-6 space-y-5">
-        <h2 className="font-medium text-lg">Suscripcion</h2>
+      <div className="bg-white rounded-2xl border border-[var(--color-olive)]/10 p-6 space-y-5 animate-fade-up delay-200">
+        <h2 className="font-display text-lg text-[var(--color-olive)]">
+          Suscripción
+        </h2>
 
         {subscription ? (
           <>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-[var(--color-white-40)]">Plan</p>
-                <p className="font-medium">
+                <p className="text-sm text-[var(--color-black)]/50">Plan</p>
+                <p className="font-medium text-[var(--color-black)]">
                   {planLabel(subscription.plan)}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[var(--color-white-40)]">Estado</p>
-                <p className="font-medium">
+                <p className="text-sm text-[var(--color-black)]/50">Estado</p>
+                <p className="font-medium text-[var(--color-black)]">
                   {statusLabel(subscription.status)}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[var(--color-white-40)]">
-                  Proxima facturacion
+                <p className="text-sm text-[var(--color-black)]/50">
+                  Próxima facturación
                 </p>
-                <p className="font-medium">
+                <p className="font-medium text-[var(--color-black)]">
                   {formatDate(subscription.current_period_end)}
                 </p>
               </div>
               {subscription.cancel_at_period_end && (
                 <div>
                   <p className="text-sm text-[var(--color-gold)]">
-                    Se cancelara al final del periodo
+                    Se cancelará al final del periodo
                   </p>
                 </div>
               )}
@@ -221,14 +227,14 @@ export default function PerfilPage() {
             <button
               onClick={handleManageSubscription}
               disabled={portalLoading}
-              className="bg-white/10 text-white text-sm px-5 py-2 rounded-lg hover:bg-white/15 transition-colors disabled:opacity-50"
+              className="bg-[var(--color-olive)] text-white text-sm px-5 py-2 rounded-lg hover:bg-[var(--color-olive)]/90 transition-colors disabled:opacity-50"
             >
-              {portalLoading ? "Cargando..." : "Gestionar suscripcion"}
+              {portalLoading ? "Cargando..." : "Gestionar suscripción"}
             </button>
           </>
         ) : (
-          <p className="text-sm text-[var(--color-white-75)]">
-            No tienes una suscripcion activa.
+          <p className="text-sm text-[var(--color-black)]/60">
+            No tienes una suscripción activa.
           </p>
         )}
       </div>
@@ -236,9 +242,9 @@ export default function PerfilPage() {
       {/* Logout */}
       <button
         onClick={handleLogout}
-        className="text-sm text-[var(--color-white-40)] hover:text-white transition-colors"
+        className="text-sm text-[var(--color-black)]/40 hover:text-[var(--color-black)] transition-colors animate-fade-up delay-300"
       >
-        Cerrar sesion
+        Cerrar sesión
       </button>
     </div>
   );

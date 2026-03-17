@@ -200,9 +200,9 @@ export default function DetalleAlumnaPage() {
 
         {/* Subscription */}
         <div className="rounded-xl border border-white/10 bg-white/5 p-6">
-          <h2 className="mb-4 text-lg font-semibold text-white">Suscripcion</h2>
+          <h2 className="mb-4 text-lg font-semibold text-white">Suscripción</h2>
           {subscriptions.length === 0 ? (
-            <p className="text-sm text-white/50">Sin suscripcion.</p>
+            <p className="text-sm text-white/50">Sin suscripción.</p>
           ) : (
             <div className="space-y-4">
               {subscriptions.map((sub) => (

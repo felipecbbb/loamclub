@@ -26,73 +26,84 @@ export default function ContactoPage() {
   return (
     <main>
       {/* ── Hero ──────────────────────────────────────────────── */}
-      <section className="px-6 pt-24 pb-16 text-center md:pt-36 md:pb-20">
-        <p className="mb-6 text-sm tracking-[0.25em] uppercase text-[var(--color-white-75)]">
-          Contacto
-        </p>
-        <h1 className="mx-auto max-w-2xl font-display text-5xl leading-tight tracking-tight md:text-7xl md:leading-[1.1]">
-          Hablemos
-        </h1>
-        <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-[var(--color-white-75)]">
-          Si tienes alguna pregunta, sugerencia o simplemente quieres saber mas
-          sobre LOAM CLUB, estamos aqui para ayudarte.
-        </p>
+      <section className="relative overflow-hidden bg-[var(--color-olive)] px-6 pt-28 pb-20 text-center md:pt-40 md:pb-28 bg-roots">
+        <div className="relative z-10">
+          <p className="mb-6 animate-fade-in text-sm tracking-[0.25em] uppercase text-[var(--color-gold)]">
+            Contacto
+          </p>
+          <h1 className="mx-auto max-w-2xl animate-fade-up font-display text-5xl leading-tight tracking-tight text-white md:text-7xl md:leading-[1.1]">
+            Hablemos
+          </h1>
+          <p className="mx-auto mt-8 max-w-xl animate-fade-up delay-200 text-lg leading-relaxed text-white/80">
+            Si tienes alguna pregunta, sugerencia o simplemente quieres saber más
+            sobre LOAM CL<span className="italic">U</span>B, estamos aquí para ayudarte.
+          </p>
+        </div>
       </section>
 
       {/* ── Content ───────────────────────────────────────────── */}
-      <section className="px-6 pb-28 md:pb-36">
+      <section className="bg-[var(--color-cream)] px-6 py-28 md:py-36">
         <div className="mx-auto grid max-w-5xl gap-16 md:grid-cols-2">
-          {/* Contact info */}
-          <div>
-            <h2 className="font-display text-2xl md:text-3xl">
-              Informacion de contacto
-            </h2>
-            <div className="mt-10 space-y-8">
-              <div>
-                <p className="text-sm tracking-wide uppercase text-[var(--color-white-40)]">
-                  Email
-                </p>
-                <a
-                  href="mailto:hola@loamclub.com"
-                  className="mt-1 block text-lg transition-opacity hover:opacity-80"
-                >
-                  hola@loamclub.com
-                </a>
-              </div>
-              <div>
-                <p className="text-sm tracking-wide uppercase text-[var(--color-white-40)]">
-                  Instagram
-                </p>
-                <a
-                  href="https://instagram.com/psicolorenaamadio"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-1 block text-lg transition-opacity hover:opacity-80"
-                >
-                  @psicolorenaamadio
-                </a>
-              </div>
-              <div>
-                <p className="text-sm tracking-wide uppercase text-[var(--color-white-40)]">
-                  Horario de respuesta
-                </p>
-                <p className="mt-1 text-lg text-[var(--color-white-75)]">
-                  Respondemos en un plazo de 24-48 horas habiles.
-                </p>
+          {/* Contact info - olive bg card */}
+          <div className="relative overflow-hidden rounded-2xl bg-[var(--color-olive)] p-8 md:p-10 bg-roots">
+            <div className="relative z-10">
+              <h2 className="font-display text-2xl text-white md:text-3xl">
+                Información de contacto
+              </h2>
+              <div className="mt-10 space-y-8">
+                <div>
+                  <p className="text-sm tracking-wide uppercase text-[var(--color-gold)]">
+                    Email
+                  </p>
+                  <a
+                    href="mailto:hola@loamclub.com"
+                    className="mt-1 block text-lg text-white transition-opacity hover:opacity-80 gold-underline"
+                  >
+                    hola@loamclub.com
+                  </a>
+                </div>
+                <div>
+                  <p className="text-sm tracking-wide uppercase text-[var(--color-gold)]">
+                    Instagram
+                  </p>
+                  <a
+                    href="https://instagram.com/psicolorenaamadio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 block text-lg text-white transition-opacity hover:opacity-80 gold-underline"
+                  >
+                    @psicolorenaamadio
+                  </a>
+                </div>
+                <div>
+                  <p className="text-sm tracking-wide uppercase text-[var(--color-gold)]">
+                    Horario de respuesta
+                  </p>
+                  <p className="mt-1 text-lg text-white/80">
+                    Respondemos en un plazo de 24-48 horas hábiles.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Form */}
           <div>
-            <h2 className="font-display text-2xl md:text-3xl">
-              Envianos un mensaje
+            <h2 className="font-display text-2xl text-[var(--color-black)] md:text-3xl">
+              Envíanos un mensaje
             </h2>
 
             {sent ? (
-              <div className="mt-10 rounded-2xl border border-[var(--color-gold)] bg-white/5 p-8 text-center">
-                <p className="font-display text-xl">Mensaje enviado</p>
-                <p className="mt-3 text-[var(--color-white-75)]">
+              <div className="mt-10 rounded-2xl border border-[var(--color-gold)] bg-white p-8 text-center shadow-sm">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-gold)]/20">
+                  <svg className="h-6 w-6 text-[var(--color-olive)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p className="font-display text-xl text-[var(--color-black)]">
+                  Mensaje enviado
+                </p>
+                <p className="mt-3 text-[var(--color-text-secondary)]">
                   Gracias por escribirnos. Te responderemos lo antes posible.
                 </p>
               </div>
@@ -101,7 +112,7 @@ export default function ContactoPage() {
                 <div>
                   <label
                     htmlFor="name"
-                    className="mb-2 block text-sm tracking-wide uppercase text-[var(--color-white-40)]"
+                    className="mb-2 block text-sm font-medium tracking-wide uppercase text-[var(--color-olive-light)]"
                   >
                     Nombre
                   </label>
@@ -112,14 +123,14 @@ export default function ContactoPage() {
                     required
                     value={form.name}
                     onChange={handleChange}
-                    className="w-full rounded-lg border border-[var(--color-white-40)] bg-white/5 px-4 py-3 text-white placeholder-[var(--color-white-40)] outline-none transition-colors focus:border-[var(--color-gold)]"
+                    className="w-full rounded-lg border border-[var(--color-border-strong)] bg-white px-4 py-3 text-[var(--color-black)] placeholder-[var(--color-olive-light)] outline-none transition-colors focus:border-[var(--color-olive)] focus:ring-2 focus:ring-[var(--color-olive)]/20"
                     placeholder="Tu nombre"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="email"
-                    className="mb-2 block text-sm tracking-wide uppercase text-[var(--color-white-40)]"
+                    className="mb-2 block text-sm font-medium tracking-wide uppercase text-[var(--color-olive-light)]"
                   >
                     Email
                   </label>
@@ -130,14 +141,14 @@ export default function ContactoPage() {
                     required
                     value={form.email}
                     onChange={handleChange}
-                    className="w-full rounded-lg border border-[var(--color-white-40)] bg-white/5 px-4 py-3 text-white placeholder-[var(--color-white-40)] outline-none transition-colors focus:border-[var(--color-gold)]"
+                    className="w-full rounded-lg border border-[var(--color-border-strong)] bg-white px-4 py-3 text-[var(--color-black)] placeholder-[var(--color-olive-light)] outline-none transition-colors focus:border-[var(--color-olive)] focus:ring-2 focus:ring-[var(--color-olive)]/20"
                     placeholder="tu@email.com"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="message"
-                    className="mb-2 block text-sm tracking-wide uppercase text-[var(--color-white-40)]"
+                    className="mb-2 block text-sm font-medium tracking-wide uppercase text-[var(--color-olive-light)]"
                   >
                     Mensaje
                   </label>
@@ -148,14 +159,14 @@ export default function ContactoPage() {
                     rows={5}
                     value={form.message}
                     onChange={handleChange}
-                    className="w-full resize-none rounded-lg border border-[var(--color-white-40)] bg-white/5 px-4 py-3 text-white placeholder-[var(--color-white-40)] outline-none transition-colors focus:border-[var(--color-gold)]"
-                    placeholder="Cuentanos en que podemos ayudarte..."
+                    className="w-full resize-none rounded-lg border border-[var(--color-border-strong)] bg-white px-4 py-3 text-[var(--color-black)] placeholder-[var(--color-olive-light)] outline-none transition-colors focus:border-[var(--color-olive)] focus:ring-2 focus:ring-[var(--color-olive)]/20"
+                    placeholder="Cuéntanos en qué podemos ayudarte..."
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={sending}
-                  className="w-full cursor-pointer rounded-full bg-[var(--color-gold)] py-4 text-sm font-bold tracking-wide text-[var(--color-green-dark)] uppercase transition-opacity hover:opacity-90 disabled:opacity-60"
+                  className="w-full cursor-pointer rounded-lg bg-[var(--color-olive)] py-4 text-sm font-bold tracking-wide text-white uppercase transition-all hover:brightness-110 disabled:opacity-60"
                 >
                   {sending ? "Enviando..." : "Enviar mensaje"}
                 </button>

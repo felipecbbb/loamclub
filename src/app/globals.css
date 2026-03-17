@@ -1,26 +1,211 @@
 @import "tailwindcss";
 
 :root {
-  --color-green-dark: #2e3520;
-  --color-green-base: #5b6644;
-  --color-green-mid: #6b7a4a;
-  --color-green-light: #8fa05a;
-  --color-gold: #fddf59;
-  --color-gold-dim: rgba(253, 223, 89, 0.4);
-  --color-white: #ffffff;
-  --color-white-75: rgba(255, 255, 255, 0.75);
-  --color-white-40: rgba(255, 255, 255, 0.4);
+  /* ── Brand Colors ── */
+  --color-olive: #5B6644;
+  --color-olive-light: #8a9470;
+  --color-olive-faint: rgba(91, 102, 68, 0.08);
+  --color-gold: #FDDF59;
+  --color-gold-dim: rgba(253, 223, 89, 0.3);
+  --color-black: #1A1A1A;
+  --color-cream: #F7F5F0;
+  --color-white: #FFFFFF;
+
+  /* ── Semantic ── */
+  --color-bg: var(--color-cream);
+  --color-surface: var(--color-white);
+  --color-text: var(--color-black);
+  --color-text-secondary: var(--color-olive);
+  --color-text-muted: var(--color-olive-light);
+  --color-border: rgba(91, 102, 68, 0.12);
+  --color-border-strong: rgba(91, 102, 68, 0.2);
+  --color-accent: var(--color-olive);
+  --color-cta: var(--color-gold);
+  --color-error: #C4564A;
+
+  /* ── Legacy aliases (keep for compatibility) ── */
+  --color-green-dark: var(--color-olive);
+  --color-green-base: var(--color-olive);
+  --color-white-75: var(--color-olive);
+  --color-white-40: var(--color-olive-light);
 }
 
 @theme inline {
-  --color-background: var(--color-green-base);
-  --color-foreground: var(--color-white);
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
   --font-sans: var(--font-arial-nova);
   --font-display: var(--font-playfair);
 }
 
+/* ── Base ── */
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: var(--font-sans);
 }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-olive-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-olive); }
+
+/* ── Selection ── */
+::selection { background: var(--color-gold); color: var(--color-black); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes growRoot {
+  from { stroke-dashoffset: 200; opacity: 0; }
+  to { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.06; }
+}
+
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(253, 223, 89, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(253, 223, 89, 0); }
+}
+
+@keyframes progressFill {
+  from { width: 0; }
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── Animation utilities ── */
+.animate-fade-up { animation: fadeUp 0.6s ease-out both; }
+.animate-fade-in { animation: fadeIn 0.5s ease-out both; }
+.animate-slide-left { animation: slideInLeft 0.5s ease-out both; }
+.animate-slide-right { animation: slideInRight 0.5s ease-out both; }
+.animate-scale-in { animation: scaleIn 0.4s ease-out both; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-breathe { animation: breathe 8s ease-in-out infinite; }
+.animate-pulse-gold { animation: pulseGold 2s ease-in-out infinite; }
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, var(--color-gold-dim) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+
+/* ── Root texture background ── */
+.bg-roots {
+  position: relative;
+}
+
+.bg-roots::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='600' height='400' viewBox='0 0 600 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%235B6644' fill='none' stroke-width='1' stroke-linecap='round' opacity='0.04'%3E%3Cpath d='M300 0 C300 60,280 100,260 140 C240 180,200 220,180 300 C170 340,160 380,150 400'/%3E%3Cpath d='M300 0 C300 50,310 90,330 130 C350 170,380 210,400 280 C410 320,430 360,440 400'/%3E%3Cpath d='M260 140 C240 160,210 170,180 180'/%3E%3Cpath d='M330 130 C350 150,380 155,410 160'/%3E%3Cpath d='M280 100 C260 120,240 140,230 180 C220 220,210 260,200 340'/%3E%3Cpath d='M310 90 C320 110,340 130,350 170 C360 210,370 250,380 340'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 600px 400px;
+  pointer-events: none;
+  animation: breathe 8s ease-in-out infinite;
+}
+
+/* ── Grain texture overlay ── */
+.bg-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* ── Card hover effect ── */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(91, 102, 68, 0.1);
+}
+
+/* ── Gold underline animation ── */
+.gold-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.gold-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-gold);
+  transition: width 0.3s ease;
+}
+
+.gold-underline:hover::after {
+  width: 100%;
+}
+
+/* ── Progress bar animation ── */
+.progress-animated {
+  animation: progressFill 1s ease-out both;
+}
+
+/* ── Stagger children ── */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeUp 0.5s ease-out both;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }

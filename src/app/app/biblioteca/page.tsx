@@ -166,9 +166,9 @@ export default function BibliotecaPage() {
   if (loading) {
     return (
       <div className="animate-pulse space-y-4 max-w-4xl">
-        <div className="h-8 w-48 bg-white/10 rounded" />
+        <div className="h-8 w-48 bg-[var(--color-olive)]/10 rounded" />
         {[1, 2].map((i) => (
-          <div key={i} className="h-20 bg-white/10 rounded-xl" />
+          <div key={i} className="h-20 bg-[var(--color-olive)]/10 rounded-2xl" />
         ))}
       </div>
     );
@@ -177,10 +177,12 @@ export default function BibliotecaPage() {
   if (courses.length === 0) {
     return (
       <div className="max-w-4xl">
-        <h1 className="font-display text-3xl font-bold mb-4">Biblioteca</h1>
-        <div className="bg-[var(--color-green-dark)] rounded-2xl p-8 text-center">
-          <p className="text-[var(--color-white-75)]">
-            Aun no hay contenido disponible. Vuelve pronto.
+        <h1 className="font-display text-3xl font-bold text-[var(--color-black)] mb-4 animate-fade-up">
+          Biblioteca
+        </h1>
+        <div className="bg-white rounded-2xl border border-[var(--color-olive)]/10 p-8 text-center animate-fade-up delay-100">
+          <p className="text-[var(--color-black)]/60">
+            Aún no hay contenido disponible. Vuelve pronto.
           </p>
         </div>
       </div>
@@ -189,13 +191,15 @@ export default function BibliotecaPage() {
 
   return (
     <div className="max-w-4xl">
-      <h1 className="font-display text-3xl font-bold mb-6">Biblioteca</h1>
+      <h1 className="font-display text-3xl font-bold text-[var(--color-black)] mb-6 animate-fade-up">
+        Biblioteca
+      </h1>
 
       <div className="space-y-4">
-        {courses.map((course) => (
+        {courses.map((course, courseIdx) => (
           <div
             key={course.id}
-            className="bg-[var(--color-green-dark)] rounded-2xl overflow-hidden"
+            className={`bg-white rounded-2xl border border-[var(--color-olive)]/10 overflow-hidden card-hover animate-fade-up delay-${Math.min((courseIdx + 1) * 100, 600)}`}
           >
             {/* Course header */}
             <button
@@ -203,17 +207,17 @@ export default function BibliotecaPage() {
               className="w-full text-left p-6 flex items-center justify-between group"
             >
               <div className="min-w-0">
-                <h2 className="font-display text-xl font-bold group-hover:text-[var(--color-gold)] transition-colors">
+                <h2 className="font-display text-xl font-bold text-[var(--color-olive)] group-hover:text-[var(--color-gold)] transition-colors">
                   {course.title}
                 </h2>
                 {course.description && (
-                  <p className="text-sm text-[var(--color-white-40)] mt-1 line-clamp-2">
+                  <p className="text-sm text-[var(--color-black)]/50 mt-1 line-clamp-2">
                     {course.description}
                   </p>
                 )}
-                <p className="text-xs text-[var(--color-white-40)] mt-2">
+                <p className="text-xs text-[var(--color-olive)]/60 mt-2">
                   {course.modules.length}{" "}
-                  {course.modules.length === 1 ? "modulo" : "modulos"} ·{" "}
+                  {course.modules.length === 1 ? "módulo" : "módulos"} ·{" "}
                   {course.modules.reduce(
                     (acc, m) => acc + m.lessons.length,
                     0
@@ -222,7 +226,7 @@ export default function BibliotecaPage() {
                 </p>
               </div>
               <svg
-                className={`w-5 h-5 text-[var(--color-white-40)] shrink-0 transition-transform ${
+                className={`w-5 h-5 text-[var(--color-olive)]/40 shrink-0 transition-transform duration-300 ${
                   expandedCourses.has(course.id) ? "rotate-180" : ""
                 }`}
                 viewBox="0 0 24 24"
@@ -235,85 +239,101 @@ export default function BibliotecaPage() {
             </button>
 
             {/* Modules */}
-            {expandedCourses.has(course.id) && (
-              <div className="px-6 pb-6 space-y-2">
-                {course.modules.map((mod) => (
-                  <div
-                    key={mod.id}
-                    className="bg-white/5 rounded-xl overflow-hidden"
-                  >
-                    {/* Module header */}
-                    <button
-                      onClick={() => toggleModule(mod.id)}
-                      className="w-full text-left px-4 py-3 flex items-center justify-between group"
+            <div
+              className={`grid transition-all duration-300 ease-in-out ${
+                expandedCourses.has(course.id)
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="px-6 pb-6 space-y-2">
+                  {course.modules.map((mod, modIdx) => (
+                    <div
+                      key={mod.id}
+                      className={`bg-[var(--color-cream)] rounded-xl overflow-hidden animate-fade-up delay-${Math.min((modIdx + 1) * 100, 600)}`}
                     >
-                      <div className="min-w-0">
-                        <h3 className="text-sm font-medium group-hover:text-[var(--color-gold)] transition-colors">
-                          {mod.title}
-                        </h3>
-                        <p className="text-xs text-[var(--color-white-40)]">
-                          {mod.lessons.filter((l) => l.completed).length}/
-                          {mod.lessons.length} completadas
-                        </p>
-                      </div>
-                      <svg
-                        className={`w-4 h-4 text-[var(--color-white-40)] shrink-0 transition-transform ${
-                          expandedModules.has(mod.id) ? "rotate-180" : ""
-                        }`}
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
+                      {/* Module header */}
+                      <button
+                        onClick={() => toggleModule(mod.id)}
+                        className="w-full text-left px-4 py-3 flex items-center justify-between group"
                       >
-                        <polyline points="6 9 12 15 18 9" />
-                      </svg>
-                    </button>
+                        <div className="min-w-0">
+                          <h3 className="text-sm font-medium text-[var(--color-black)] group-hover:text-[var(--color-gold)] transition-colors">
+                            {mod.title}
+                          </h3>
+                          <p className="text-xs text-[var(--color-olive)]/60">
+                            {mod.lessons.filter((l) => l.completed).length}/
+                            {mod.lessons.length} completadas
+                          </p>
+                        </div>
+                        <svg
+                          className={`w-4 h-4 text-[var(--color-olive)]/40 shrink-0 transition-transform duration-300 ${
+                            expandedModules.has(mod.id) ? "rotate-180" : ""
+                          }`}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                      </button>
 
-                    {/* Lessons */}
-                    {expandedModules.has(mod.id) && (
-                      <div className="px-4 pb-3 space-y-1">
-                        {mod.lessons.map((lesson, idx) => (
-                          <button
-                            key={lesson.id}
-                            onClick={() =>
-                              router.push(`/app/leccion/${lesson.id}`)
-                            }
-                            className="w-full text-left flex items-center gap-3 py-2 px-2 rounded-lg hover:bg-white/5 transition-colors group"
-                          >
-                            {/* Completion indicator */}
-                            {lesson.completed ? (
-                              <span className="w-6 h-6 rounded-full bg-[var(--color-gold)] flex items-center justify-center shrink-0">
-                                <svg
-                                  className="w-3.5 h-3.5 text-[var(--color-green-dark)]"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="3"
-                                >
-                                  <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                              </span>
-                            ) : (
-                              <span className="w-6 h-6 rounded-full border border-[var(--color-white-40)] flex items-center justify-center text-xs text-[var(--color-white-40)] shrink-0">
-                                {idx + 1}
-                              </span>
-                            )}
-                            <span className="text-sm truncate flex-1 group-hover:text-[var(--color-gold)] transition-colors">
-                              {lesson.title}
-                            </span>
-                            {lesson.duration_seconds && (
-                              <span className="text-xs text-[var(--color-white-40)] shrink-0">
-                                {formatDuration(lesson.duration_seconds)}
-                              </span>
-                            )}
-                          </button>
-                        ))}
+                      {/* Lessons */}
+                      <div
+                        className={`grid transition-all duration-300 ease-in-out ${
+                          expandedModules.has(mod.id)
+                            ? "grid-rows-[1fr] opacity-100"
+                            : "grid-rows-[0fr] opacity-0"
+                        }`}
+                      >
+                        <div className="overflow-hidden">
+                          <div className="px-4 pb-3 space-y-1">
+                            {mod.lessons.map((lesson, idx) => (
+                              <button
+                                key={lesson.id}
+                                onClick={() =>
+                                  router.push(`/app/leccion/${lesson.id}`)
+                                }
+                                className="w-full text-left flex items-center gap-3 py-2 px-2 rounded-lg hover:bg-white transition-colors group"
+                              >
+                                {/* Completion indicator */}
+                                {lesson.completed ? (
+                                  <span className="w-6 h-6 rounded-full bg-[var(--color-olive)] flex items-center justify-center shrink-0">
+                                    <svg
+                                      className="w-3.5 h-3.5 text-[var(--color-gold)]"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      strokeWidth="3"
+                                    >
+                                      <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                  </span>
+                                ) : (
+                                  <span className="w-6 h-6 rounded-full bg-[var(--color-cream)] border border-[var(--color-olive)]/30 flex items-center justify-center text-xs text-[var(--color-olive)] shrink-0">
+                                    {idx + 1}
+                                  </span>
+                                )}
+                                <span className="text-sm truncate flex-1 text-[var(--color-black)] group-hover:text-[var(--color-gold)] transition-colors">
+                                  {lesson.title}
+                                </span>
+                                {lesson.duration_seconds && (
+                                  <span className="text-xs text-[var(--color-olive)]/60 shrink-0">
+                                    {formatDuration(lesson.duration_seconds)}
+                                  </span>
+                                )}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
                       </div>
-                    )}
-                  </div>
-                ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-            )}
+            </div>
           </div>
         ))}
       </div>

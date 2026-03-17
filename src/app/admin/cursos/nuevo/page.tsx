@@ -113,7 +113,7 @@ export default function NuevoCursoPage() {
     });
     setSaving(false);
     if (error) return showMessage("error", error.message);
-    showMessage("success", "Modulo creado correctamente");
+    showMessage("success", "Módulo creado correctamente");
     setModuleTitle("");
     setModuleSlug("");
     setModuleDescription("");
@@ -122,7 +122,7 @@ export default function NuevoCursoPage() {
   };
 
   const saveLesson = async () => {
-    if (!lessonModuleId) return showMessage("error", "Selecciona un modulo");
+    if (!lessonModuleId) return showMessage("error", "Selecciona un módulo");
     setSaving(true);
     const { error } = await supabase.from("lessons").insert({
       module_id: lessonModuleId,
@@ -134,7 +134,7 @@ export default function NuevoCursoPage() {
     });
     setSaving(false);
     if (error) return showMessage("error", error.message);
-    showMessage("success", "Leccion creada correctamente");
+    showMessage("success", "Lección creada correctamente");
     setLessonTitle("");
     setLessonSlug("");
     setLessonDescription("");
@@ -144,12 +144,12 @@ export default function NuevoCursoPage() {
   };
 
   const saveExercise = async () => {
-    if (!exerciseLessonId) return showMessage("error", "Selecciona una leccion");
+    if (!exerciseLessonId) return showMessage("error", "Selecciona una lección");
     let parsedContent: Record<string, unknown>;
     try {
       parsedContent = JSON.parse(exerciseContent);
     } catch {
-      return showMessage("error", "El contenido JSON no es valido");
+      return showMessage("error", "El contenido JSON no es válido");
     }
     setSaving(true);
     const { error } = await supabase.from("exercises").insert({
@@ -167,8 +167,8 @@ export default function NuevoCursoPage() {
 
   const tabs: { key: Tab; label: string }[] = [
     { key: "curso", label: "Curso" },
-    { key: "modulo", label: "Modulo" },
-    { key: "leccion", label: "Leccion" },
+    { key: "modulo", label: "Módulo" },
+    { key: "leccion", label: "Lección" },
     { key: "ejercicio", label: "Ejercicio" },
   ];
 
@@ -224,7 +224,7 @@ export default function NuevoCursoPage() {
         {activeTab === "curso" && (
           <div className="space-y-5">
             <div>
-              <label className={labelClass}>Titulo</label>
+              <label className={labelClass}>Título</label>
               <input
                 className={inputClass}
                 value={courseTitle}
@@ -245,12 +245,12 @@ export default function NuevoCursoPage() {
               />
             </div>
             <div>
-              <label className={labelClass}>Descripcion</label>
+              <label className={labelClass}>Descripción</label>
               <textarea
                 className={inputClass + " min-h-[100px] resize-y"}
                 value={courseDescription}
                 onChange={(e) => setCourseDescription(e.target.value)}
-                placeholder="Descripcion del curso (opcional)"
+                placeholder="Descripción del curso (opcional)"
               />
             </div>
             <div className="flex items-center gap-3">
@@ -292,7 +292,7 @@ export default function NuevoCursoPage() {
               </select>
             </div>
             <div>
-              <label className={labelClass}>Titulo</label>
+              <label className={labelClass}>Título</label>
               <input
                 className={inputClass}
                 value={moduleTitle}
@@ -300,7 +300,7 @@ export default function NuevoCursoPage() {
                   setModuleTitle(e.target.value);
                   setModuleSlug(generateSlug(e.target.value));
                 }}
-                placeholder="Nombre del modulo"
+                placeholder="Nombre del módulo"
               />
             </div>
             <div>
@@ -313,12 +313,12 @@ export default function NuevoCursoPage() {
               />
             </div>
             <div>
-              <label className={labelClass}>Descripcion</label>
+              <label className={labelClass}>Descripción</label>
               <textarea
                 className={inputClass + " min-h-[100px] resize-y"}
                 value={moduleDescription}
                 onChange={(e) => setModuleDescription(e.target.value)}
-                placeholder="Descripcion del modulo (opcional)"
+                placeholder="Descripción del módulo (opcional)"
               />
             </div>
             <div className="flex items-center gap-3">
@@ -342,7 +342,7 @@ export default function NuevoCursoPage() {
               disabled={saving || !moduleTitle || !moduleCourseId}
               className="rounded-lg bg-[#fddf59] px-6 py-2.5 text-sm font-semibold text-[#2e3520] transition-colors hover:bg-[#fddf59]/90 disabled:opacity-50"
             >
-              {saving ? "Guardando..." : "Crear modulo"}
+              {saving ? "Guardando..." : "Crear módulo"}
             </button>
           </div>
         )}
@@ -351,9 +351,9 @@ export default function NuevoCursoPage() {
         {activeTab === "leccion" && (
           <div className="space-y-5">
             <div>
-              <label className={labelClass}>Modulo</label>
+              <label className={labelClass}>Módulo</label>
               <select className={selectClass} value={lessonModuleId} onChange={(e) => setLessonModuleId(e.target.value)}>
-                <option value="">Seleccionar modulo...</option>
+                <option value="">Seleccionar módulo...</option>
                 {modules.map((m) => {
                   const course = courses.find((c) => c.id === m.course_id);
                   return (
@@ -365,7 +365,7 @@ export default function NuevoCursoPage() {
               </select>
             </div>
             <div>
-              <label className={labelClass}>Titulo</label>
+              <label className={labelClass}>Título</label>
               <input
                 className={inputClass}
                 value={lessonTitle}
@@ -373,7 +373,7 @@ export default function NuevoCursoPage() {
                   setLessonTitle(e.target.value);
                   setLessonSlug(generateSlug(e.target.value));
                 }}
-                placeholder="Nombre de la leccion"
+                placeholder="Nombre de la lección"
               />
             </div>
             <div>
@@ -386,12 +386,12 @@ export default function NuevoCursoPage() {
               />
             </div>
             <div>
-              <label className={labelClass}>Descripcion</label>
+              <label className={labelClass}>Descripción</label>
               <textarea
                 className={inputClass + " min-h-[100px] resize-y"}
                 value={lessonDescription}
                 onChange={(e) => setLessonDescription(e.target.value)}
-                placeholder="Descripcion de la leccion (opcional)"
+                placeholder="Descripción de la lección (opcional)"
               />
             </div>
             <div>
@@ -424,7 +424,7 @@ export default function NuevoCursoPage() {
               disabled={saving || !lessonTitle || !lessonModuleId}
               className="rounded-lg bg-[#fddf59] px-6 py-2.5 text-sm font-semibold text-[#2e3520] transition-colors hover:bg-[#fddf59]/90 disabled:opacity-50"
             >
-              {saving ? "Guardando..." : "Crear leccion"}
+              {saving ? "Guardando..." : "Crear lección"}
             </button>
           </div>
         )}
@@ -433,9 +433,9 @@ export default function NuevoCursoPage() {
         {activeTab === "ejercicio" && (
           <div className="space-y-5">
             <div>
-              <label className={labelClass}>Leccion</label>
+              <label className={labelClass}>Lección</label>
               <select className={selectClass} value={exerciseLessonId} onChange={(e) => setExerciseLessonId(e.target.value)}>
-                <option value="">Seleccionar leccion...</option>
+                <option value="">Seleccionar lección...</option>
                 {lessons.map((l) => {
                   const mod = modules.find((m) => m.id === l.module_id);
                   const course = mod ? courses.find((c) => c.id === mod.course_id) : null;
@@ -448,7 +448,7 @@ export default function NuevoCursoPage() {
               </select>
             </div>
             <div>
-              <label className={labelClass}>Titulo</label>
+              <label className={labelClass}>Título</label>
               <input
                 className={inputClass}
                 value={exerciseTitle}
@@ -463,7 +463,7 @@ export default function NuevoCursoPage() {
                 value={exerciseType}
                 onChange={(e) => setExerciseType(e.target.value as ExerciseType)}
               >
-                <option value="reflection">Reflexion</option>
+                <option value="reflection">Reflexión</option>
                 <option value="quiz">Quiz</option>
                 <option value="checklist">Checklist</option>
                 <option value="download">Descarga</option>

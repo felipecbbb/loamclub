@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Derecho de Desistimiento",
   description:
-    "Informacion sobre tu derecho de desistimiento en LOAM CLUB. 14 dias para ejercerlo con excepcion de contenido digital accedido.",
+    "Información sobre tu derecho de desistimiento en LOAM CLUB. 14 días para ejercerlo con excepción de contenido digital accedido.",
 };
 
 export default function DesistimientoPage() {
@@ -16,7 +16,7 @@ export default function DesistimientoPage() {
         Derecho de Desistimiento
       </h1>
       <p className="mt-4 text-sm text-[var(--color-white-40)]">
-        Ultima actualizacion: marzo 2026
+        Última actualización: marzo 2026
       </p>
 
       <div className="mt-12 space-y-10 text-[var(--color-white-75)] leading-relaxed [&_h2]:mb-4 [&_h2]:mt-0 [&_h2]:font-display [&_h2]:text-xl [&_h2]:text-white [&_h2]:md:text-2xl [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2">
@@ -26,18 +26,18 @@ export default function DesistimientoPage() {
             De conformidad con el Real Decreto Legislativo 1/2007, de 16 de
             noviembre, por el que se aprueba el texto refundido de la Ley
             General para la Defensa de los Consumidores y Usuarios, tienes
-            derecho a desistir del contrato de suscripcion en un plazo de{" "}
-            <strong>14 dias naturales</strong> desde la fecha de contratacion,
-            sin necesidad de justificacion alguna.
+            derecho a desistir del contrato de suscripción en un plazo de{" "}
+            <strong>14 días naturales</strong> desde la fecha de contratación,
+            sin necesidad de justificación alguna.
           </p>
         </section>
 
         <section>
-          <h2>2. Excepcion para contenido digital</h2>
+          <h2>2. Excepción para contenido digital</h2>
           <p>
-            De acuerdo con el articulo 103.m) del texto refundido de la Ley
+            De acuerdo con el artículo 103.m) del texto refundido de la Ley
             General para la Defensa de los Consumidores y Usuarios, el derecho
-            de desistimiento no sera aplicable cuando hayas accedido al
+            de desistimiento no será aplicable cuando hayas accedido al
             contenido digital de la plataforma.
           </p>
           <p>
@@ -47,17 +47,17 @@ export default function DesistimientoPage() {
             contenido, pierdes el derecho de desistimiento.
           </p>
           <p>
-            Esta excepcion se basa en que el contenido digital, una vez
+            Esta excepción se basa en que el contenido digital, una vez
             accedido, no puede ser &quot;devuelto&quot; de la misma forma que un
-            producto fisico.
+            producto físico.
           </p>
         </section>
 
         <section>
-          <h2>3. Como ejercer el derecho de desistimiento</h2>
+          <h2>3. Cómo ejercer el derecho de desistimiento</h2>
           <p>
             Si deseas ejercer tu derecho de desistimiento dentro del plazo de 14
-            dias y antes de haber accedido al contenido, puedes hacerlo de las
+            días y antes de haber accedido al contenido, puedes hacerlo de las
             siguientes formas:
           </p>
           <ul>
@@ -70,7 +70,7 @@ export default function DesistimientoPage() {
                 hola@loamclub.com
               </a>{" "}
               con el asunto &quot;Desistimiento&quot;, indicando tu nombre, email de
-              registro y fecha de suscripcion.
+              registro y fecha de suscripción.
             </li>
             <li>
               Utilizando el siguiente formulario tipo de desistimiento (no
@@ -83,16 +83,16 @@ export default function DesistimientoPage() {
               Modelo de formulario de desistimiento
             </p>
             <div className="space-y-3 text-sm">
-              <p>A la atencion de LOAM CLUB (hola@loamclub.com):</p>
+              <p>A la atención de LOAM CLUB (hola@loamclub.com):</p>
               <p>
                 Por la presente le comunico que desisto del contrato de
-                suscripcion al servicio LOAM CLUB.
+                suscripción al servicio LOAM CLUB.
               </p>
-              <p>Fecha de contratacion: _______________</p>
+              <p>Fecha de contratación: _______________</p>
               <p>Nombre del consumidor: _______________</p>
               <p>Email de registro: _______________</p>
               <p>Fecha: _______________</p>
-              <p>Firma (solo si se envia en papel): _______________</p>
+              <p>Firma (solo si se envía en papel): _______________</p>
             </div>
           </div>
         </section>
@@ -101,29 +101,29 @@ export default function DesistimientoPage() {
           <h2>4. Efectos del desistimiento</h2>
           <ul>
             <li>
-              Una vez recibida tu comunicacion de desistimiento, procederemos al
-              reembolso integro del pago realizado en un plazo maximo de{" "}
-              <strong>14 dias naturales</strong>.
+              Una vez recibida tu comunicación de desistimiento, procederemos al
+              reembolso íntegro del pago realizado en un plazo máximo de{" "}
+              <strong>14 días naturales</strong>.
             </li>
             <li>
-              El reembolso se realizara utilizando el mismo medio de pago
-              empleado en la transaccion original (tarjeta de credito/debito a
-              traves de Stripe).
+              El reembolso se realizará utilizando el mismo medio de pago
+              empleado en la transacción original (tarjeta de crédito/débito a
+              través de Stripe).
             </li>
             <li>
-              Tu acceso a la plataforma sera desactivado de forma inmediata tras
-              la confirmacion del desistimiento.
+              Tu acceso a la plataforma será desactivado de forma inmediata tras
+              la confirmación del desistimiento.
             </li>
           </ul>
         </section>
 
         <section>
-          <h2>5. Cancelacion de la suscripcion (fuera del plazo de desistimiento)</h2>
+          <h2>5. Cancelación de la suscripción (fuera del plazo de desistimiento)</h2>
           <p>
             Independientemente del derecho de desistimiento, puedes cancelar tu
-            suscripcion en cualquier momento desde tu perfil de usuario. La
-            cancelacion sera efectiva al final del periodo de facturacion en
-            curso y no se realizaran reembolsos por periodos parciales.
+            suscripción en cualquier momento desde tu perfil de usuario. La
+            cancelación será efectiva al final del periodo de facturación en
+            curso y no se realizarán reembolsos por periodos parciales.
           </p>
         </section>
 

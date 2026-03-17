@@ -9,8 +9,8 @@ const navItems = [
   { label: "Dashboard", href: "/admin/dashboard", icon: "grid" },
   { label: "Cursos", href: "/admin/cursos", icon: "book" },
   { label: "Alumnas", href: "/admin/alumnas", icon: "users" },
-  { label: "Facturacion", href: "/admin/facturacion", icon: "credit-card" },
-  { label: "Configuracion", href: "/admin/config", icon: "settings" },
+  { label: "Facturación", href: "/admin/facturacion", icon: "credit-card" },
+  { label: "Configuración", href: "/admin/config", icon: "settings" },
 ];
 
 function NavIcon({ icon, className }: { icon: string; className?: string }) {
@@ -65,22 +65,26 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   return (
-    <div className="flex h-screen bg-[#2e3520]">
+    <div className="flex h-screen bg-[var(--color-cream)]">
       {/* Mobile overlay */}
       {sidebarOpen && (
-        <div className="fixed inset-0 z-30 bg-black/50 lg:hidden" onClick={() => setSidebarOpen(false)} />
+        <div className="fixed inset-0 z-30 bg-black/40 lg:hidden" onClick={() => setSidebarOpen(false)} />
       )}
 
-      {/* Sidebar */}
+      {/* Sidebar - olive bg with white/gold text */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-white/10 bg-[#2e3520] transition-transform lg:static lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-[var(--color-olive)] transition-transform lg:static lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Logo */}
         <div className="flex items-center gap-3 border-b border-white/10 px-6 py-5">
-          <span className="font-display text-xl font-bold tracking-wide text-white">LOAM CLUB</span>
-          <span className="rounded bg-[#fddf59] px-2 py-0.5 text-xs font-bold text-[#2e3520]">Admin</span>
+          <span className="font-display text-xl font-bold tracking-wide text-white">
+            LOAM CL<span className="italic">U</span>B
+          </span>
+          <span className="rounded-full bg-[var(--color-gold)] px-2.5 py-0.5 text-xs font-bold text-[var(--color-black)]">
+            Admin
+          </span>
         </div>
 
         {/* Nav */}
@@ -94,7 +98,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 onClick={() => setSidebarOpen(false)}
                 className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-[#fddf59]/15 text-[#fddf59]"
+                    ? "bg-white/10 text-[var(--color-gold)]"
                     : "text-white/70 hover:bg-white/5 hover:text-white"
                 }`}
               >
@@ -107,12 +111,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
         {/* User */}
         <div className="border-t border-white/10 px-4 py-4">
-          <div className="mb-3 truncate text-sm text-white/60">{userEmail ?? "..."}</div>
+          <div className="mb-3 truncate text-sm text-white/70">{userEmail ?? "..."}</div>
           <button
             onClick={handleLogout}
             className="w-full rounded-lg bg-white/5 px-3 py-2 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
           >
-            Cerrar sesion
+            Cerrar sesión
           </button>
         </div>
       </aside>
@@ -120,17 +124,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Main */}
       <div className="flex flex-1 flex-col overflow-hidden">
         {/* Mobile header */}
-        <header className="flex items-center border-b border-white/10 px-4 py-3 lg:hidden">
-          <button onClick={() => setSidebarOpen(true)} className="text-white/70 hover:text-white">
+        <header className="flex items-center border-b border-[var(--color-border)] bg-white px-4 py-3 lg:hidden">
+          <button onClick={() => setSidebarOpen(true)} className="text-[var(--color-olive-light)] hover:text-[var(--color-olive)]">
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
-          <span className="ml-3 font-display text-lg font-bold text-white">LOAM CLUB</span>
-          <span className="ml-2 rounded bg-[#fddf59] px-1.5 py-0.5 text-[10px] font-bold text-[#2e3520]">Admin</span>
+          <span className="ml-3 font-display text-lg font-bold text-[var(--color-olive)]">
+            LOAM CL<span className="italic">U</span>B
+          </span>
+          <span className="ml-2 rounded-full bg-[var(--color-gold)] px-2 py-0.5 text-[10px] font-bold text-[var(--color-black)]">
+            Admin
+          </span>
         </header>
 
-        <main className="flex-1 overflow-y-auto p-6 lg:p-8">{children}</main>
+        <main className="flex-1 overflow-y-auto bg-[var(--color-cream)] p-6 lg:p-8">{children}</main>
       </div>
     </div>
   );

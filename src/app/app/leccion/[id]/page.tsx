@@ -238,9 +238,9 @@ export default function LeccionPage() {
   if (loading) {
     return (
       <div className="animate-pulse space-y-6 max-w-4xl">
-        <div className="aspect-video bg-white/10 rounded-2xl" />
-        <div className="h-8 w-64 bg-white/10 rounded" />
-        <div className="h-20 bg-white/10 rounded-xl" />
+        <div className="aspect-video bg-[var(--color-border)] rounded-2xl" />
+        <div className="h-8 w-64 bg-[var(--color-border)] rounded" />
+        <div className="h-20 bg-[var(--color-border)] rounded-xl" />
       </div>
     );
   }
@@ -250,7 +250,7 @@ export default function LeccionPage() {
   return (
     <div className="max-w-4xl space-y-8">
       {/* Video player */}
-      <div className="relative aspect-video bg-[var(--color-green-dark)] rounded-2xl overflow-hidden">
+      <div className="relative aspect-video rounded-2xl overflow-hidden bg-[var(--color-olive)] shadow-lg">
         {lesson.mux_playback_id ? (
           tokenLoading ? (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -292,11 +292,11 @@ export default function LeccionPage() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg className="w-8 h-8 text-[var(--color-white-40)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <svg className="w-8 h-8 text-white/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
                 </svg>
               </div>
-              <p className="text-sm text-[var(--color-white-40)]">
+              <p className="text-sm text-white/60">
                 Video pendiente de subir
               </p>
             </div>
@@ -306,11 +306,11 @@ export default function LeccionPage() {
 
       {/* Lesson info */}
       <div>
-        <h1 className="font-display text-2xl md:text-3xl font-bold">
+        <h1 className="font-display text-2xl md:text-3xl font-bold text-[var(--color-black)]">
           {lesson.title}
         </h1>
         {lesson.description && (
-          <p className="text-[var(--color-white-75)] mt-2 leading-relaxed">
+          <p className="text-[var(--color-text-secondary)] mt-2 leading-relaxed">
             {lesson.description}
           </p>
         )}
@@ -319,9 +319,9 @@ export default function LeccionPage() {
       {/* Completion status */}
       <div className="flex items-center gap-4">
         {isCompleted ? (
-          <div className="flex items-center gap-2 text-[var(--color-gold)]">
+          <div className="flex items-center gap-2 rounded-full bg-[var(--color-olive)]/10 px-4 py-2">
             <svg
-              className="w-5 h-5"
+              className="w-5 h-5 text-[var(--color-olive)]"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -329,13 +329,13 @@ export default function LeccionPage() {
             >
               <polyline points="20 6 9 17 4 12" />
             </svg>
-            <span className="text-sm font-medium">Leccion completada</span>
+            <span className="text-sm font-medium text-[var(--color-olive)]">Lección completada</span>
           </div>
         ) : (
           <button
             onClick={handleMarkCompleted}
             disabled={markingComplete}
-            className="bg-[var(--color-gold)] text-[var(--color-green-dark)] font-medium text-sm px-5 py-2 rounded-lg hover:brightness-110 transition-all disabled:opacity-50"
+            className="bg-[var(--color-olive)] text-white font-medium text-sm px-5 py-2.5 rounded-full hover:brightness-110 transition-all disabled:opacity-50"
           >
             {markingComplete ? "Guardando..." : "Marcar como completada"}
           </button>
@@ -345,7 +345,7 @@ export default function LeccionPage() {
       {/* Exercises */}
       {exercises.length > 0 && (
         <div className="space-y-6">
-          <h2 className="font-display text-xl font-bold">Ejercicios</h2>
+          <h2 className="font-display text-xl font-bold text-[var(--color-black)]">Ejercicios</h2>
           {exercises.map((exercise) => (
             <ExerciseRenderer
               key={exercise.id}
@@ -365,11 +365,11 @@ export default function LeccionPage() {
       )}
 
       {/* Prev/Next navigation */}
-      <div className="flex items-center justify-between pt-6 border-t border-white/10">
+      <div className="flex items-center justify-between pt-6 border-t border-[var(--color-border)]">
         {prevLesson ? (
           <button
             onClick={() => router.push(`/app/leccion/${prevLesson.id}`)}
-            className="flex items-center gap-2 text-sm text-[var(--color-white-75)] hover:text-white transition-colors group"
+            className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-olive)] transition-colors group"
           >
             <svg
               className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform"
@@ -388,7 +388,7 @@ export default function LeccionPage() {
         {nextLesson ? (
           <button
             onClick={() => router.push(`/app/leccion/${nextLesson.id}`)}
-            className="flex items-center gap-2 text-sm text-[var(--color-white-75)] hover:text-white transition-colors group"
+            className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-olive)] transition-colors group"
           >
             <span className="truncate max-w-[200px]">{nextLesson.title}</span>
             <svg
@@ -429,11 +429,14 @@ function ExerciseRenderer({
   const isCompleted = savedResponse?.completed || false;
 
   return (
-    <div className="bg-[var(--color-green-dark)] rounded-2xl p-6">
+    <div className="rounded-2xl border border-[var(--color-border)] bg-white p-6 shadow-sm card-hover">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-medium">{exercise.title}</h3>
+        <div className="flex items-center gap-3">
+          <div className="h-8 w-1 rounded-full bg-[var(--color-olive)]" />
+          <h3 className="font-medium text-[var(--color-black)]">{exercise.title}</h3>
+        </div>
         {isCompleted && (
-          <span className="text-xs text-[var(--color-gold)] flex items-center gap-1">
+          <span className="text-xs text-[var(--color-olive)] flex items-center gap-1 bg-[var(--color-olive)]/10 px-2.5 py-1 rounded-full">
             <svg
               className="w-3.5 h-3.5"
               viewBox="0 0 24 24"
@@ -509,7 +512,7 @@ function ReflectionExercise({
   return (
     <div className="space-y-3">
       {prompt && (
-        <p className="text-sm text-[var(--color-white-75)] leading-relaxed">
+        <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
           {prompt}
         </p>
       )}
@@ -517,13 +520,13 @@ function ReflectionExercise({
         value={text}
         onChange={(e) => onUpdateLocal({ text: e.target.value })}
         rows={4}
-        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white resize-y focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]/50 focus:border-[var(--color-gold)]"
-        placeholder="Escribe tu reflexion aqui..."
+        className="w-full border border-[var(--color-border-strong)] bg-[var(--color-cream)] rounded-lg px-4 py-3 text-sm text-[var(--color-black)] resize-y focus:outline-none focus:ring-2 focus:ring-[var(--color-olive)]/30 focus:border-[var(--color-olive)] placeholder-[var(--color-olive-light)]"
+        placeholder="Escribe tu reflexión aquí..."
       />
       <button
         onClick={() => onSave(true)}
         disabled={saving || !text.trim()}
-        className="bg-[var(--color-gold)] text-[var(--color-green-dark)] font-medium text-sm px-5 py-2 rounded-lg hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        className="bg-[var(--color-olive)] text-white font-medium text-sm px-5 py-2 rounded-lg hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {saving ? "Guardando..." : completed ? "Actualizar" : "Guardar"}
       </button>
@@ -565,7 +568,7 @@ function QuizExercise({
   return (
     <div className="space-y-3">
       {question && (
-        <p className="text-sm text-[var(--color-white-75)] leading-relaxed">
+        <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
           {question}
         </p>
       )}
@@ -575,28 +578,28 @@ function QuizExercise({
           const isCorrect = correctIndex === idx;
           const showResult = showFeedback || completed;
 
-          let borderClass = "border-white/10";
-          if (isSelected) borderClass = "border-[var(--color-gold)]";
+          let borderClass = "border-[var(--color-border-strong)]";
+          if (isSelected) borderClass = "border-[var(--color-olive)]";
           if (showResult && isSelected && !isCorrect)
             borderClass = "border-red-400";
-          if (showResult && isCorrect) borderClass = "border-green-400";
+          if (showResult && isCorrect) borderClass = "border-green-500";
 
           return (
             <button
               key={idx}
               onClick={() => handleSelect(idx)}
               disabled={completed}
-              className={`w-full text-left flex items-center gap-3 px-4 py-2.5 rounded-lg border ${borderClass} bg-white/5 text-sm transition-colors hover:bg-white/10 disabled:cursor-default`}
+              className={`w-full text-left flex items-center gap-3 px-4 py-2.5 rounded-lg border ${borderClass} bg-[var(--color-cream)] text-sm text-[var(--color-black)] transition-colors hover:bg-[var(--color-olive-faint)] disabled:cursor-default`}
             >
               <span
                 className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
                   isSelected
-                    ? "border-[var(--color-gold)]"
-                    : "border-[var(--color-white-40)]"
+                    ? "border-[var(--color-olive)]"
+                    : "border-[var(--color-olive-light)]"
                 }`}
               >
                 {isSelected && (
-                  <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-gold)]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-olive)]" />
                 )}
               </span>
               <span>{option}</span>
@@ -606,12 +609,12 @@ function QuizExercise({
       </div>
       {showFeedback && correctIndex !== undefined && (
         <p
-          className={`text-sm ${
-            selected === correctIndex ? "text-green-400" : "text-red-400"
+          className={`text-sm font-medium ${
+            selected === correctIndex ? "text-green-600" : "text-red-500"
           }`}
         >
           {selected === correctIndex
-            ? "Correcto!"
+            ? "¡Correcto!"
             : `Incorrecto. La respuesta correcta es: ${options[correctIndex]}`}
         </p>
       )}
@@ -619,7 +622,7 @@ function QuizExercise({
         <button
           onClick={handleSubmit}
           disabled={saving || selected === undefined}
-          className="bg-[var(--color-gold)] text-[var(--color-green-dark)] font-medium text-sm px-5 py-2 rounded-lg hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-[var(--color-olive)] text-white font-medium text-sm px-5 py-2 rounded-lg hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {saving ? "Guardando..." : "Comprobar"}
         </button>
@@ -658,7 +661,7 @@ function ChecklistExercise({
   return (
     <div className="space-y-3">
       {(content.instructions as string) && (
-        <p className="text-sm text-[var(--color-white-75)] leading-relaxed">
+        <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
           {content.instructions as string}
         </p>
       )}
@@ -666,19 +669,19 @@ function ChecklistExercise({
         {items.map((item, idx) => (
           <label
             key={idx}
-            className="flex items-start gap-3 cursor-pointer group"
+            className="flex items-start gap-3 cursor-pointer group rounded-lg px-3 py-2 hover:bg-[var(--color-olive-faint)] transition-colors"
           >
             <input
               type="checkbox"
               checked={checked[idx] || false}
               onChange={() => toggleItem(idx)}
-              className="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/5 text-[var(--color-gold)] focus:ring-[var(--color-gold)]/50 accent-[#fddf59]"
+              className="mt-0.5 w-4 h-4 rounded border-[var(--color-olive-light)] bg-[var(--color-cream)] text-[var(--color-olive)] focus:ring-[var(--color-olive)]/50 accent-[#5B6644]"
             />
             <span
               className={`text-sm ${
                 checked[idx]
-                  ? "text-[var(--color-white-40)] line-through"
-                  : "text-white"
+                  ? "text-[var(--color-olive-light)] line-through"
+                  : "text-[var(--color-black)]"
               }`}
             >
               {item}
@@ -689,7 +692,7 @@ function ChecklistExercise({
       <button
         onClick={() => onSave(allChecked)}
         disabled={saving}
-        className="bg-[var(--color-gold)] text-[var(--color-green-dark)] font-medium text-sm px-5 py-2 rounded-lg hover:brightness-110 transition-all disabled:opacity-50"
+        className="bg-[var(--color-olive)] text-white font-medium text-sm px-5 py-2 rounded-lg hover:brightness-110 transition-all disabled:opacity-50"
       >
         {saving ? "Guardando..." : "Guardar progreso"}
       </button>
@@ -710,7 +713,7 @@ function DownloadExercise({
   return (
     <div className="space-y-3">
       {instructions && (
-        <p className="text-sm text-[var(--color-white-75)] leading-relaxed">
+        <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
           {instructions}
         </p>
       )}
@@ -718,7 +721,7 @@ function DownloadExercise({
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 bg-white/10 text-white text-sm px-5 py-2.5 rounded-lg hover:bg-white/15 transition-colors"
+        className="inline-flex items-center gap-2 bg-[var(--color-olive)] text-white text-sm px-5 py-2.5 rounded-lg hover:brightness-110 transition-all"
       >
         <svg
           className="w-4 h-4"
@@ -747,9 +750,9 @@ function FreeformExercise({
   const text = (content.text as string) || (content.markdown as string) || "";
 
   return (
-    <div className="prose prose-sm prose-invert max-w-none">
+    <div className="prose prose-sm max-w-none">
       <div
-        className="text-sm text-[var(--color-white-75)] leading-relaxed whitespace-pre-wrap"
+        className="text-sm text-[var(--color-text-secondary)] leading-relaxed whitespace-pre-wrap"
         dangerouslySetInnerHTML={{ __html: text }}
       />
     </div>

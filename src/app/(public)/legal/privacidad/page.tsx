@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Politica de Privacidad",
+  title: "Política de Privacidad",
   description:
-    "Politica de privacidad de LOAM CLUB. Informacion sobre el tratamiento de tus datos personales.",
+    "Política de privacidad de LOAM CLUB. Información sobre el tratamiento de tus datos personales.",
 };
 
 export default function PrivacidadPage() {
@@ -13,10 +13,10 @@ export default function PrivacidadPage() {
         Legal
       </p>
       <h1 className="font-display text-4xl leading-tight md:text-5xl">
-        Politica de Privacidad
+        Política de Privacidad
       </h1>
       <p className="mt-4 text-sm text-[var(--color-white-40)]">
-        Ultima actualizacion: marzo 2026
+        Última actualización: marzo 2026
       </p>
 
       <div className="mt-12 space-y-10 text-[var(--color-white-75)] leading-relaxed [&_h2]:mb-4 [&_h2]:mt-0 [&_h2]:font-display [&_h2]:text-xl [&_h2]:text-white [&_h2]:md:text-2xl [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2">
@@ -35,30 +35,30 @@ export default function PrivacidadPage() {
         <section>
           <h2>2. Datos que recopilamos</h2>
           <p>
-            Recopilamos los siguientes datos personales en funcion de tu
-            interaccion con nuestra plataforma:
+            Recopilamos los siguientes datos personales en función de tu
+            interacción con nuestra plataforma:
           </p>
           <ul>
             <li>
-              <strong>Datos de registro:</strong> nombre, direccion de correo
-              electronico y contrasena cifrada.
+              <strong>Datos de registro:</strong> nombre, dirección de correo
+              electrónico y contraseña cifrada.
             </li>
             <li>
-              <strong>Datos de facturacion:</strong> informacion de pago
-              procesada de forma segura a traves de Stripe. No almacenamos
-              numeros de tarjeta en nuestros servidores.
+              <strong>Datos de facturación:</strong> información de pago
+              procesada de forma segura a través de Stripe. No almacenamos
+              números de tarjeta en nuestros servidores.
             </li>
             <li>
-              <strong>Datos de uso:</strong> informacion sobre tu actividad en
+              <strong>Datos de uso:</strong> información sobre tu actividad en
               la plataforma, como videos visualizados y progreso en ejercicios.
             </li>
             <li>
-              <strong>Datos de comunicacion:</strong> mensajes enviados a traves
+              <strong>Datos de comunicación:</strong> mensajes enviados a través
               del formulario de contacto o por email.
             </li>
             <li>
-              <strong>Datos tecnicos:</strong> direccion IP, tipo de navegador,
-              sistema operativo y datos de cookies (ver Politica de Cookies).
+              <strong>Datos técnicos:</strong> dirección IP, tipo de navegador,
+              sistema operativo y datos de cookies (ver Política de Cookies).
             </li>
           </ul>
         </section>
@@ -67,13 +67,13 @@ export default function PrivacidadPage() {
           <h2>3. Finalidades del tratamiento</h2>
           <p>Tratamos tus datos personales para las siguientes finalidades:</p>
           <ul>
-            <li>Gestionar tu cuenta y suscripcion en la plataforma.</li>
-            <li>Procesar pagos y facturacion a traves de Stripe.</li>
+            <li>Gestionar tu cuenta y suscripción en la plataforma.</li>
+            <li>Procesar pagos y facturación a través de Stripe.</li>
             <li>
               Proporcionarte acceso al contenido y servicios contratados.
             </li>
             <li>
-              Comunicarnos contigo en relacion con tu cuenta, cambios en el
+              Comunicarnos contigo en relación con tu cuenta, cambios en el
               servicio o respuestas a consultas.
             </li>
             <li>
@@ -84,22 +84,22 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <h2>4. Base juridica del tratamiento</h2>
+          <h2>4. Base jurídica del tratamiento</h2>
           <ul>
             <li>
-              <strong>Ejecucion del contrato:</strong> el tratamiento es
+              <strong>Ejecución del contrato:</strong> el tratamiento es
               necesario para prestarte el servicio al que te has suscrito.
             </li>
             <li>
-              <strong>Consentimiento:</strong> para el envio de comunicaciones
+              <strong>Consentimiento:</strong> para el envío de comunicaciones
               comerciales, cuando corresponda.
             </li>
             <li>
-              <strong>Interes legitimo:</strong> para la mejora de nuestros
-              servicios y la prevencion del fraude.
+              <strong>Interés legítimo:</strong> para la mejora de nuestros
+              servicios y la prevención del fraude.
             </li>
             <li>
-              <strong>Obligacion legal:</strong> para el cumplimiento de
+              <strong>Obligación legal:</strong> para el cumplimiento de
               obligaciones fiscales y legales.
             </li>
           </ul>
@@ -108,8 +108,8 @@ export default function PrivacidadPage() {
         <section>
           <h2>5. Destinatarios de los datos</h2>
           <p>
-            Tus datos podran ser comunicados a los siguientes terceros,
-            unicamente en la medida necesaria para la prestacion del servicio:
+            Tus datos podrán ser comunicados a los siguientes terceros,
+            únicamente en la medida necesaria para la prestación del servicio:
           </p>
           <ul>
             <li>
@@ -118,7 +118,7 @@ export default function PrivacidadPage() {
             </li>
             <li>
               <strong>Supabase:</strong> alojamiento de la base de datos y
-              autenticacion.
+              autenticación.
             </li>
             <li>
               <strong>Proveedores de alojamiento web:</strong> para el
@@ -135,52 +135,52 @@ export default function PrivacidadPage() {
           <h2>6. Transferencias internacionales</h2>
           <p>
             Algunos de nuestros proveedores de servicios pueden estar ubicados
-            fuera del Espacio Economico Europeo (EEE). En tales casos, nos
-            aseguramos de que existan garantias adecuadas, como clausulas
-            contractuales tipo aprobadas por la Comision Europea o la adhesion
+            fuera del Espacio Económico Europeo (EEE). En tales casos, nos
+            aseguramos de que existan garantías adecuadas, como cláusulas
+            contractuales tipo aprobadas por la Comisión Europea o la adhesión
             al EU-US Data Privacy Framework.
           </p>
         </section>
 
         <section>
-          <h2>7. Plazo de conservacion</h2>
+          <h2>7. Plazo de conservación</h2>
           <p>
             Conservaremos tus datos personales durante el tiempo que mantengas
             tu cuenta activa y, posteriormente, durante los plazos legalmente
             establecidos para el cumplimiento de obligaciones fiscales y legales
-            (generalmente 5 anos para datos fiscales).
+            (generalmente 5 años para datos fiscales).
           </p>
         </section>
 
         <section>
           <h2>8. Tus derechos</h2>
           <p>
-            De conformidad con el Reglamento General de Proteccion de Datos
+            De conformidad con el Reglamento General de Protección de Datos
             (RGPD), tienes los siguientes derechos:
           </p>
           <ul>
             <li>
-              <strong>Acceso:</strong> derecho a obtener confirmacion de si
+              <strong>Acceso:</strong> derecho a obtener confirmación de si
               estamos tratando tus datos y a acceder a ellos.
             </li>
             <li>
-              <strong>Rectificacion:</strong> derecho a corregir datos inexactos
+              <strong>Rectificación:</strong> derecho a corregir datos inexactos
               o incompletos.
             </li>
             <li>
-              <strong>Supresion:</strong> derecho a solicitar la eliminacion de
+              <strong>Supresión:</strong> derecho a solicitar la eliminación de
               tus datos cuando ya no sean necesarios.
             </li>
             <li>
-              <strong>Limitacion:</strong> derecho a solicitar la limitacion del
+              <strong>Limitación:</strong> derecho a solicitar la limitación del
               tratamiento en determinadas circunstancias.
             </li>
             <li>
               <strong>Portabilidad:</strong> derecho a recibir tus datos en un
-              formato estructurado y de uso comun.
+              formato estructurado y de uso común.
             </li>
             <li>
-              <strong>Oposicion:</strong> derecho a oponerte al tratamiento de
+              <strong>Oposición:</strong> derecho a oponerte al tratamiento de
               tus datos en determinadas circunstancias.
             </li>
           </ul>
@@ -192,11 +192,11 @@ export default function PrivacidadPage() {
             >
               hola@loamclub.com
             </a>
-            . Responderemos a tu solicitud en un plazo maximo de 30 dias.
+            . Responderemos a tu solicitud en un plazo máximo de 30 días.
           </p>
           <p>
-            Asimismo, tienes derecho a presentar una reclamacion ante la Agencia
-            Espanola de Proteccion de Datos (AEPD) si consideras que el
+            Asimismo, tienes derecho a presentar una reclamación ante la Agencia
+            Española de Protección de Datos (AEPD) si consideras que el
             tratamiento de tus datos no se ajusta a la normativa vigente.
           </p>
         </section>
@@ -204,21 +204,21 @@ export default function PrivacidadPage() {
         <section>
           <h2>9. Seguridad</h2>
           <p>
-            Implementamos medidas tecnicas y organizativas adecuadas para
+            Implementamos medidas técnicas y organizativas adecuadas para
             proteger tus datos personales contra el acceso no autorizado, la
-            perdida, la destruccion o la alteracion. Entre estas medidas se
+            pérdida, la destrucción o la alteración. Entre estas medidas se
             incluyen el cifrado de datos, el acceso restringido y la
-            monitorizacion de seguridad.
+            monitorización de seguridad.
           </p>
         </section>
 
         <section>
           <h2>10. Modificaciones</h2>
           <p>
-            Nos reservamos el derecho de modificar esta Politica de Privacidad
-            en cualquier momento. Cualquier cambio sera publicado en esta pagina
-            con la fecha de actualizacion correspondiente. Te recomendamos
-            revisarla periodicamente.
+            Nos reservamos el derecho de modificar esta Política de Privacidad
+            en cualquier momento. Cualquier cambio será publicado en esta página
+            con la fecha de actualización correspondiente. Te recomendamos
+            revisarla periódicamente.
           </p>
         </section>
       </div>

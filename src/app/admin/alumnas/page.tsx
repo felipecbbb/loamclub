@@ -119,7 +119,7 @@ export default function AlumnasPage() {
           <option value="past_due">Pago pendiente</option>
           <option value="canceled">Cancelada</option>
           <option value="trialing">Prueba</option>
-          <option value="none">Sin suscripcion</option>
+          <option value="none">Sin suscripción</option>
         </select>
       </div>
 
@@ -165,7 +165,7 @@ export default function AlumnasPage() {
                         {statusLabels[a.subscription.status] ?? a.subscription.status}
                       </span>
                     ) : (
-                      <span className="text-xs text-white/30">Sin suscripcion</span>
+                      <span className="text-xs text-white/30">Sin suscripción</span>
                     )}
                   </td>
                   <td className="px-4 py-3 text-white/50">

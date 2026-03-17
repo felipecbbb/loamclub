@@ -1,88 +1,89 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import {
+  Navbar,
+  NavBody,
+  NavItems,
+  MobileNav,
+  NavbarLogo,
+  NavbarButton,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
+} from "@/components/ui/resizable-navbar";
 
-const navLinks = [
-  { href: "/metodo", label: "Metodo" },
-  { href: "/pricing", label: "Planes" },
-  { href: "/testimonios", label: "Testimonios" },
-  { href: "/sobre-mi", label: "Sobre mi" },
-  { href: "/contacto", label: "Contacto" },
+const navItems = [
+  { name: "Método", link: "/metodo" },
+  { name: "Planes", link: "/pricing" },
+  { name: "Testimonios", link: "/testimonios" },
+  { name: "Sobre mí", link: "/sobre-mi" },
+  { name: "Contacto", link: "/contacto" },
 ];
 
 export function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="w-full border-b border-white/10">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <Link href="/" className="font-display text-2xl font-bold text-[var(--color-gold)]">
-          LOAM <span className="italic">CLUB</span>
-        </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-[var(--color-white-75)] hover:text-white transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Desktop CTA */}
-        <div className="hidden md:block">
-          <Link href="/login">
-            <Button variant="secondary" size="sm">
-              Iniciar sesion
-            </Button>
-          </Link>
+    <Navbar>
+      {/* Desktop */}
+      <NavBody>
+        <NavbarLogo />
+        <NavItems items={navItems} />
+        <div className="flex items-center gap-3">
+          <NavbarButton variant="secondary" href="/login">
+            Iniciar sesión
+          </NavbarButton>
+          <NavbarButton variant="primary" href="/pricing">
+            Unirse al club
+          </NavbarButton>
         </div>
+      </NavBody>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          aria-label="Abrir menu"
+      {/* Mobile */}
+      <MobileNav>
+        <MobileNavHeader>
+          <NavbarLogo />
+          <MobileNavToggle
+            isOpen={isMobileMenuOpen}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          />
+        </MobileNavHeader>
+
+        <MobileNavMenu
+          isOpen={isMobileMenuOpen}
+          onClose={() => setIsMobileMenuOpen(false)}
         >
-          <span
-            className={`block w-6 h-0.5 bg-white transition-transform duration-200 ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-white transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-white transition-transform duration-200 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}
-          />
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <nav className="md:hidden border-t border-white/10 px-6 py-4 flex flex-col gap-3">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="text-sm text-[var(--color-white-75)] hover:text-white py-1"
+          {navItems.map((item, idx) => (
+            <a
+              key={`mobile-link-${idx}`}
+              href={item.link}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-sm text-white/60 hover:text-white transition-colors"
             >
-              {link.label}
-            </Link>
+              {item.name}
+            </a>
           ))}
-          <Link href="/login" onClick={() => setMenuOpen(false)}>
-            <Button variant="secondary" size="sm" className="w-full mt-2">
-              Iniciar sesion
-            </Button>
-          </Link>
-        </nav>
-      )}
-    </header>
+          <div className="flex w-full flex-col gap-3 mt-2">
+            <NavbarButton
+              href="/login"
+              onClick={() => setIsMobileMenuOpen(false)}
+              variant="secondary"
+              className="w-full"
+            >
+              Iniciar sesión
+            </NavbarButton>
+            <NavbarButton
+              href="/pricing"
+              onClick={() => setIsMobileMenuOpen(false)}
+              variant="primary"
+              className="w-full"
+            >
+              Unirse al club
+            </NavbarButton>
+          </div>
+        </MobileNavMenu>
+      </MobileNav>
+    </Navbar>
   );
 }
